@@ -1,0 +1,156 @@
+\documentclass[11pt]{article}
+
+\usepackage{mathpazo}
+\usepackage[natbib,style=alphabetic,maxalphanames=3,maxcitenames=2,maxbibnames=10]{biblatex}
+\addbibresource{bibliography/bib.bib}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{definition}{Definition}
+
+\usepackage{todonotes}
+\usepackage{xcolor}
+\usepackage{color-edits}
+\usepackage[colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+
+% matan includes
+\usepackage{outlines}				%out enviroment 
+\usepackage{xspace}                 %so we don't need
+\usepackage{cancel}                 %\not across multiple symbols
+\usepackage{mdframed}
+\usepackage{enumitem}               % nolistsep
+\usepackage{cleveref}               % cref
+
+\include{lib/macros.tex}
+
+\title{CASI--MATS 1: Application}
+\author{Carnegie AI Safety Initiative}
+\begin{document}
+\maketitle
+
+% \begin{abstract}
+%     This is a very good paper.
+% \end{abstract}
+
+\section{Application to what?}
+
+\href{https://cmuaisafety.com/}{CASI} is prototyping a \href{https://www.matsprogram.org/}{MATS}-style research fellowship, connecting talented undergrads and masters students with leading AI Safety researchers \@ CMU! 
+
+\paragraph{Who?}
+The project will be senior-mentored by \href{https://arobey1.github.io/}{Alex Robey} (postdoc \@ Zico's group $\rightarrow$ OpenAI AI Safety Team) and junior mentored by \href{https://davisrbrown.com/}{Davis Brown} and \href{https://matanshtepel.com/}{Matan Shtepel} (PhD students at UPenn, CMU).
+We expect 3-7 students to be selected to participate in the project.
+
+\paragraph{What should you expect to gain?}
+Whether you want to learn the work skills for the emerging area of AI Safety / Security to make a bunch of money at Deepmind or save the world, this is for you! Through this project you can expect to get:   
+
+\begin{itemize}[noitemsep]
+    \item \textbf{Mentorship:} Senior mentorship from Alex Robey (experienced AI Safety researcher) and hands-on guidance from Davis \& Matan
+    \item \textbf{Research skills:} Learn how to make progress on open-ended research project.
+    \item \textbf{Publication:} Co-authorship on a paper submitted to a leading ML conference.
+    \item \textbf{Resources:} Compute and API credits as needed for your work.
+    \item \textbf{Impact:} Contribute to research with real-world implications for AI safety.
+\end{itemize}
+We expect the project to start in the first or second week of November and run through approximately February, with the possibility of extending depending on outcomes and performance. 
+
+
+\paragraph{What we are looking for.}
+We prioritize creativity and curiosity over technical perfection.
+We're looking for students who can think critically about open-ended problems, explore novel approaches, and demonstrate genuine interest in AI safety research.
+Strong coding skills are helpful but not required---resourcefulness and the ability to learn quickly matter more in succeeding in the project and this application.
+
+\paragraph{What do we expect?}
+Dedication, creativity, $\gtrapprox 10$ hours of work per week for $\gtrapprox 3$ months, decent programming. \emph{No prior ML / AI Safety / Red-teaming experience necessary.} 
+Some basic knowledge of LLMs: for example, the words `context window, reasoning model, coding agent' should be relatively familiar.
+
+
+\paragraph{What is the project? Red-teaming decomposiiton attacks}
+LLMs are pretty damn smart---so smart that without proper safeguards they can significantly aid individuals in causing harm, including helping build weapons of mass destruction (WMDPs).
+Traditional jailbreaking research \cite{zou2023universal,chao2024jailbreakinga} focuses on a `one-shot' setting where an adversary tries to extract sensitive information from an LLM via a single query (e.g. `how can I build a leathal bioweapon?'), or more generally, within a single context window.
+However, this setting is insufficient: adversaries can extract dangerous information by splitting queries across \emph{multiple context windows}, or even across several model providers, potentially with the help of weaker, unaligned, open-source language models.
+Whether / how we can defend from such attacks is nascent and active area of research. 
+
+We are interested in studying \emph{decomposition attacks}, where an adversary splits malicious queries across multiple context windows to bypass safety measures.
+Prior work has studied these attacks in toy settings (e.g., multiple-choice questions \cite{brown2025benchmarking}), and we want to extend to more general decomposition attacks where an weak unaligned \emph{agent} oracle-queries several stronger models to achieve a complex task beyond the reach of its capabilities (e.g. hack a complex system). 
+Several major labs are interested in building mitigations against such attacks, including OpenAI. 
+
+Research is always dynamic, but we expect the first step of the priject to be to scaffold and train a weak unaligned model to attack a mitigating system constructed by Davis and Alex.
+
+\paragraph{How to apply?}
+Submit a GitHub repository containing a README / LaTeX with your answers to the questions below, along with any code you write for the technical questions.
+For additional questions, contact \url{mailto:mshtepel@andrew.cmu.edu}.
+\matan{lawrence create a submission portal and add details here -- should have some easy filtering based on year, etc. Maybe can put these questions in a Gdoc?}
+
+
+
+
+\section{The application}
+
+
+
+
+\subsection{Technical questions regarding projects}
+
+\paragraph{Instructions}
+Please answer all of the following questions and provide any code you write.
+These questions are designed to assess your resourcefulness and critical thinking when dealing with open-ended tasks---not to test your coding prowess.
+Feel free to use Cursor or similar assistants, but we value your independent thinking.
+The questions are quite open ended, but please don't be unneceserily verbose
+
+\matan{Lawrence: realistically this will require some (at least \$20) API credit. Do we want to provide? Do we want to allow them to ask for credit if they are poor? Need to discuss.}
+
+
+\subsubsection{Evidence for LM WMDP capabilities}
+\cite{gotting2025virology} proposes a benchmark for evaluating LLMs' virology capabilities.
+Read the paper and assess it critically: Do you see any methodological gaps or limitations that would make you doubt their results?
+What findings did you find most striking or concerning?  
+
+\subsubsection{Getting familiar with the threat model}
+\cite{jones2024adversariesb} proposes a threat model that differs from traditional jailbreaking works like \cite{chao2024jailbreakinga}.
+What is the key difference?
+Now, try implementing the attack from \cite{jones2024adversariesb} on one or two models and report your results.
+Explain the broad attack framework, what you tried, and your reasoning behind your approach. 
+Explain how you assessed whether you succeeded or not.
+
+\subsubsection{Assessing another paper on the same topic}
+\cite{glukhov2024breach} is another paper on decomposition attacks.
+What unique value does it add beyond previous work?
+Can you explain what in your opnion their mathematical framework accomplishes?
+
+\subsubsection{Curating data}
+\cite{brown2025benchmarking} curates a dataset to study decomposition attacks, focusing exclusively on WMDP queries.
+Your task: build a small cyber dataset for decomposition attacks.
+Explain your methodology for curating the dataset---why did you choose this approach and how you chose this approach?
+How would you scale it up?
+Can you get an agent to try to solve these questions directly? With decomposition attack? 
+
+\subsubsection{Literature search}
+Hunt for other relevant papers on decomposition attacks and multi-context jailbreaking.
+What did you find?
+If you can't find more paper, which papers other topics do you consider closely related?
+
+
+\subsubsection{Future work}
+What excites or concerns you about this line of work?
+What questions do you have about its real-world impact?
+What future directions seem most promising?
+This is your space to share your unfiltered thoughts---just try to stay on topic $\;$ ; )
+
+\subsection{Soft questions}
+\matan{Lawrence: prob just move these to the Google Form and remove from LaTeX? Need to discuss.}
+Answer the following questions in $\approx$ a paragraph each.
+\begin{enumerate}
+    \item Why do you want to participate in this project? 
+    \item We hope to select students for the project who will actually have the capacity to participate and think that $\approx$ 10 hrs / week is required to make this experience meaningful. We expect that you are already very, very, very busy. Please concretely explain how you plan to make time for this project and when you expect to be able to work on it? 
+    \item Are there any specific experiences you have that you want us to consider with your application?  
+\end{enumerate}
+
+
+
+
+\begin{center}
+Have fun and goodluck!, \\
+\emph{Matan and the CASI team}.
+\end{center}
+
+\printbibliography
+\end{document}

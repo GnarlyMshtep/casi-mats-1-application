@@ -1,0 +1,16 @@
+LLMs
+Monitorability
+unmonitorable
+affine-RepE
+unmonitorability
+CoT
+monitorable
+RepE
+suspiciousness
+CoT-monitoring
+hardcode
+monitorability
+Matan
+steganographic
+CoTs
+eval

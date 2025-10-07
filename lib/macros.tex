@@ -1,0 +1,182 @@
+\renewcommand{\epsilon}{\varepsilon} % (this paper is sane-certified)
+\newcommand{\TODO}{{\color{red} [TODO]}}
+\newcommand{\CITE}{{\color{red} [CITE]}}
+\newcommand{\matan}[1]{{\color{purple} m: #1}}
+\newcommand{\E}{\mathop{\mathbb{E}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% begin region MATAN MACROS FILE
+% \input{lib/matan_includes} %paths are relative to main.tex! 
+\input{lib/modifier-shortcuts}
+% \input{lib/snark-shortcuts}
+\input{lib/paper-specific}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Envieroments
+
+\newmdenv[
+    topline=false,
+    bottomline=false,
+    rightline=false,
+    leftline=true, % Only the left line is enabled
+    linecolor=gray!40, % Light gray color for the line
+    linewidth=4pt, % Width of the line
+    leftmargin=5pt, % Indent from the left margin
+    rightmargin=10pt, % Right margin spacing
+    innertopmargin=5pt, % Space above the text inside the frame
+    innerbottommargin=5pt % Space below the text inside the frame
+]{indentedtext}
+
+%! status does not play nice with flot yet
+\newmdenv[
+    topline=false,
+    bottomline=true,
+    rightline=false,
+    leftline=true, % Only the left line is enabled
+    linecolor=purple!40, % Light purple color for the line
+    linewidth=4pt, % Width of the line
+    leftmargin=5pt, % Indent from the left margin
+    rightmargin=10pt, % Right margin spacing
+    innertopmargin=5pt, % Space above the text inside the frame
+    innerbottommargin=10pt, % Space below the text inside the frame
+    roundcorner=10pt, % Rounded corners
+]{statusReportInternal}
+
+\newcommand{\status}[2]{
+    \begin{statusReportInternal}
+        \parhead{Status}
+        \emph{#1}\\
+        \par\noindent #2
+    \end{statusReportInternal}
+}
+
+\newenvironment{out}
+{\begin{outline}[enumerate]
+}
+{ 
+    \end{outline}
+}
+
+\newenvironment{researchquestion}
+{
+    \itshape
+    \begin{center}
+    \vspace{.1em}
+}
+{
+    \end{center}
+    \vspace{.1em}
+}
+
+\NewDocumentCommand{\largeProb}{m m m O{=}}{
+    \begin{equation*}
+        \Pr\insqr{#1 \;\left| \;  
+        \begin{aligned}
+            #2 
+        \end{aligned}
+        \right.} #4 #3
+    \end{equation*}
+    }
+    
+\newcommand{\diffLargeProb}[5]{
+\begin{dmath*}
+\inabs{
+    \Pr \insqr{ #1 \; \left| \;
+    \begin{aligned}
+        #2
+    \end{aligned}
+    }\right.
+    -
+    \Pr \insqr{ #3 \; \left| \;
+    \begin{aligned}
+        #4
+    \end{aligned}
+    }\right.
+    } = #5	
+\end{dmath*}
+}
+
+\newcommand{\eqLargeDist}[5]{
+    \begin{dmath*}
+        \inset{ #1 \; \left| \;
+        \begin{aligned}
+            #2
+        \end{aligned}
+        }\right.
+        #3
+        \inset{ #4 \; \left| \;
+        \begin{aligned}
+            #5
+        \end{aligned}
+        }\right.	
+    \end{dmath*}
+    }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% in*  
+\newcommand{\inpar}[1]{\ensuremath{\left( #1 \right)}\xspace}
+\newcommand{\insqr}[1]{\ensuremath{\left[ #1 \right]}\xspace}
+\newcommand{\inabs}[1]{\ensuremath{\left| #1 \right|}\xspace}
+\newcommand{\inset}[1]{\ensuremath{\left\{ #1 \right\}}\xspace}
+\newcommand{\inceil}[1]{\ensuremath{\left\lceil #1 \right\rceil}\xspace}
+\newcommand{\infloor}[1]{\ensuremath{\left\lfloor #1 \right\rfloor}\xspace}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% General Math 
+
+%markdown
+\newcommand{\unestablished}{\XXX[unestablished]}
+
+
+%symbols
+\renewcommand{\phi}{\varphi}
+\newcommand{\eps}{\ensuremath{\epsilon}\xspace}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\ZZ}[1]{\ensuremath{\Z_{#1}}}
+\newcommand{\vv}[1]{\ensuremath{\vec{#1}}\xspace}
+\newcommand{\qeq}{{\stackrel{?}{=}}}
+\newcommand{\tensor}{\otimes}
+%
+\newcommand{\GeneratedBy}[1]{\ensuremath{\langle #1 \rangle}\xspace}
+\newcommand{\convolution}{\ensuremath{*}\xspace}
+\newcommand{\divides}{\ensuremath{\:|\:}\xspace}
+
+%decorators 
+\newcommand{\inv}{\ensuremath{{^{-1}}}\xspace}
+\renewcommand{\sc}[1]{^{(#1)}}
+\newcommand{\Support}{{\mathrm{Support}}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+%% graph theory
+\newcommand{\Graph}{G}
+\newcommand{\Nei}{\ensuremath{\mathrm{Nbr}}}
+\newcommand{\eigen}{\ensuremath{\lambda}\xspace}
+\newcommand{\Cayley}[2]{\mathrm{Cay}(#1, #2)}
+\newcommand{\CayleySquared}[3]{\mathrm{Cay}^2(#1, #2, #3)}
+
+
+%indexes
+\newcommand{\istar}{\ensuremath{i^\star}\xspace}
+\newcommand{\jstar}{\ensuremath{j^\star}\xspace}
+
+%styling
+\newcommand{\Greymidrule}{\arrayrulecolor{lightgray}\midrule\arrayrulecolor{black}}
+\newcommand{\horizLine}{\noindent\textcolor[RGB]{220,220,220}{\rule{\linewidth}{2pt}}}
+\newcommand{\suchthat}{\ensuremath{~\middle|~}}
+\newcommand{\defined}{\ensuremath{:=}}
+
+% Lin Algebra 
+\newcommand{\spanLA}{\ensuremath{\mathrm{span}}\xspace}
+
+
+% other math 
+\newcommand{\perm}{\pi}
+
+

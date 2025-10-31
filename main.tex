@@ -63,17 +63,17 @@ Dedication, creativity, $\gtrapprox 10$ hours of work per week for $\gtrapprox 3
 Some basic knowledge of LLMs: for example, the words `context window, reasoning model, coding agent' should be relatively familiar.
 
 
-\paragraph{What is the project? Red-teaming decomposiiton attacks}
+\paragraph{What is the project? Red-teaming decomposition attacks}
 LLMs are pretty damn smart---so smart that without proper safeguards they can significantly aid individuals in causing harm, including helping build weapons of mass destruction (WMDPs).
-Traditional jailbreaking research \cite{zou2023universal,chao2024jailbreakinga} focuses on a `one-shot' setting where an adversary tries to extract sensitive information from an LLM via a single query (e.g. `how can I build a leathal bioweapon?'), or more generally, within a single context window.
+Traditional jailbreaking research \cite{zou2023universal,chao2024jailbreakinga} focuses on a `one-shot' setting where an adversary tries to extract sensitive information from an LLM via a single query (e.g. `how can I build a lethal bioweapon?'), or more generally, within a single context window.
 However, this setting is insufficient: adversaries can extract dangerous information by splitting queries across \emph{multiple context windows}, or even across several model providers, potentially with the help of weaker, unaligned, open-source language models.
-Whether / how we can defend from such attacks is nascent and active area of research. 
+Whether / how we can defend from such attacks is a nascent and active area of research. 
 
 We are interested in studying \emph{decomposition attacks}, where an adversary splits malicious queries across multiple context windows to bypass safety measures.
-Prior work has studied these attacks in toy settings (e.g., multiple-choice questions \cite{brown2025benchmarking}), and we want to extend to more general decomposition attacks where an weak unaligned \emph{agent} oracle-queries several stronger models to achieve a complex task beyond the reach of its capabilities (e.g. hack a complex system). 
+Prior work has studied these attacks in toy settings (e.g., multiple-choice questions \cite{brown2025benchmarking}), and we want to extend to more general decomposition attacks where a weak unaligned \emph{agent} oracle-queries several stronger models to achieve a complex task beyond the reach of its capabilities (e.g. hack a complex system). 
 Several major labs are interested in building mitigations against such attacks, including OpenAI. 
 
-Research is always dynamic, but we expect the first step of the priject to be to scaffold and train a weak unaligned model to attack a mitigating system constructed by Davis and Alex.
+Research is always dynamic, but we expect the first step of the project to be to scaffold and train a weak unaligned model to attack a mitigating system constructed by Davis and Alex.
 
 \paragraph{How to apply?}
 Submit a GitHub repository containing a README / LaTeX with your answers to the questions below, along with any code you write for the technical questions, via the following \href{https://docs.google.com/forms/d/e/1FAIpQLSfFYd2qV0gfI3tKSqgj9WYKaWSPm6bajqMUcP4gwA0g15To1w/viewform?usp=header}{Google Form.} For additional questions, contact \url{mailto:mshtepel@andrew.cmu.edu}. 
@@ -92,7 +92,7 @@ You might want API credits to complete 2.1.4. We expect that the task will cost 
 Please answer all of the following questions and provide any code you write.
 These questions are designed to assess your resourcefulness and critical thinking when dealing with open-ended tasks---not to test your coding prowess.
 Feel free to use Cursor or similar assistants, but we value your independent thinking.
-The questions are quite open ended, but please don't be unneceserily verbose, but definitely feel free to be agentic and go beyond :) 
+The questions are quite open ended, but please don't be unnecessarily verbose, but definitely feel free to be agentic and go beyond :) 
 
 
 
@@ -111,7 +111,7 @@ Explain how you assessed whether you succeeded or not.
 \subsubsection{Assessing another paper on the same topic}
 \cite{glukhov2024breach} is another paper on decomposition attacks.
 What unique value does it add beyond previous work?
-Can you explain what in your opnion their mathematical framework accomplishes?
+Can you explain what in your opinion their mathematical framework accomplishes?
 
 \subsubsection{Curating data}
 \cite{brown2025benchmarking} curates a dataset to study decomposition attacks, focusing exclusively on WMDP queries.
@@ -123,7 +123,7 @@ Can you get an agent to try to solve these questions directly? With decompositio
 \subsubsection{Literature search}
 Hunt for other relevant papers on decomposition attacks and multi-context jailbreaking.
 What did you find?
-If you can't find more paper, which papers other topics do you consider closely related?
+If you can't find more papers, which papers on other topics do you consider closely related?
 
 \subsubsection{Future work}
 What excites or concerns you about this line of work?
